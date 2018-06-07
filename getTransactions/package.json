@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "start": "node ./node_modules/babel-cli/bin/babel-node.js app"
   },
   "author": "Jet",
   "license": "ISC",
