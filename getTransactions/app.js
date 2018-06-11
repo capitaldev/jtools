@@ -18,7 +18,7 @@ const params = {
 }
 
 // let data = {};
-let txts = [];
+let txns = [];
 let content = ''
 
 for (let address of walletsArr) {
@@ -30,19 +30,23 @@ for (let address of walletsArr) {
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send();
   let { result } = JSON.parse(xhttp.responseText)
-  txts = txts.concat(result);
+  txns = txns.concat(result);
+  txns = common.addType(txns, address);
 }
 
-// const newtxts = common.getNewTxts(txts, 864000);
+// const newtxns = common.getNewTxns(txns, 864000);
 
-// fs.writeFile('Txts2.json', JSON.stringify({ result: newtxts }), function (err) {
+// fs.writeFile('Txns2.json', JSON.stringify({ result: txns }), function (err) {
 //   if (err) throw err;
 //   console.log('Saved!');
 // });
 
-const contracttxt = common.combineTxts(txts);
 
-fs.writeFile('Txts3.json', JSON.stringify({ result: contracttxt }), function (err) {
+
+console.log(txns.length)
+const contracttxn = common.combineTxns(txns);
+
+fs.writeFile('Txns3.json', JSON.stringify({ result: contracttxn }), function (err) {
   if (err) throw err;
   console.log('Saved!');
 });
