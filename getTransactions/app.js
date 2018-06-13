@@ -30,12 +30,14 @@ for (let address of walletsArr) {
   xhttp.setRequestHeader("Content-type", "application/json");
   xhttp.send();
   let { result } = JSON.parse(xhttp.responseText)
-  txns = txns.concat(result);
-  txns = common.addType(txns, address);
+  if (result) {
+    txns = txns.concat(result);
+    txns = common.addType(txns, address);
+  }
 }
 
 // get recent txns (no olders than 10 days)
-const newTxns = common.getNewTxns(txns, 864000);
+// const newTxns = common.getNewTxns(txns, 864000);
 
 const tokenTxns = common.combineTxns(txns);
 

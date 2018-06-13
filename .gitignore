@@ -1,2 +1,2 @@
-/getTransactions/node_modules
-/getTransactions/*.log
+/*/node_modules
+/*/*.log
