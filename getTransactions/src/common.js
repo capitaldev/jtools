@@ -82,9 +82,23 @@ const combineTxns = (txns) => {
   return result
 }
 
+const getTokenTxn = (tokenTxns) => {
+  let result = {};
+  for (let item of tokenTxns) {
+    let title = item.contractAddress;
+    let value = item.tnxValues.reduce((a, b) => { return parseFloat(a) + parseFloat(b) }, 0)
+    if (item.tokenSymbol !== '') {
+      title = `${item.tokenSymbol} (${item.tokenName}): `
+    }
+    result[title] = value;
+  }
+  return result;
+}
+
 export {
   requestAPI,
   getNewTxns,
   combineTxns,
-  addType
+  addType,
+  getTokenTxn
 }

@@ -34,19 +34,14 @@ for (let address of walletsArr) {
   txns = common.addType(txns, address);
 }
 
-// const newtxns = common.getNewTxns(txns, 864000);
+// get recent txns (no olders than 10 days)
+const newTxns = common.getNewTxns(txns, 864000);
 
-// fs.writeFile('Txns2.json', JSON.stringify({ result: txns }), function (err) {
-//   if (err) throw err;
-//   console.log('Saved!');
-// });
+const tokenTxns = common.combineTxns(txns);
 
+const obj = common.getTokenTxn(tokenTxns);
 
-
-console.log(txns.length)
-const contracttxn = common.combineTxns(txns);
-
-fs.writeFile('Txns3.json', JSON.stringify({ result: contracttxn }), function (err) {
+fs.writeFile('Txns2.json', JSON.stringify({ result: obj }), function (err) {
   if (err) throw err;
   console.log('Saved!');
 });
