@@ -83,14 +83,16 @@ const combineTxns = (txns) => {
 }
 
 const getTokenTxn = (tokenTxns) => {
-  let result = {};
+  let result = { contract: {} };
   for (let item of tokenTxns) {
-    let title = item.contractAddress;
+    // let title = item.contractAddress;
     let value = item.tnxValues.reduce((a, b) => { return parseFloat(a) + parseFloat(b) }, 0)
     if (item.tokenSymbol !== '') {
-      title = `${item.tokenSymbol} (${item.tokenName}): `
+      let title = `${item.tokenSymbol} (${item.tokenName})`
+      result[title] = value;
+    } else {
+      result.contract[item.contractAddress] = value;
     }
-    result[title] = value;
   }
   return result;
 }
