@@ -9,6 +9,6 @@
   "author": "Jet",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.87.0"
+    "telegraf": "^3.21.2"
   }
 }
