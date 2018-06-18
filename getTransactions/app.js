@@ -1,6 +1,8 @@
 import * as common from "./src/common";
+import fs from 'fs';
+import bot from './src/bot';
+
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const fs = require('fs');
 const wallet_url = '../getAdress/wallet_demo.csv'
 
 const wallets = fs.readFileSync(wallet_url, 'utf8')
@@ -17,9 +19,7 @@ const params = {
   sort: 'desc'
 }
 
-// let data = {};
 let txns = [];
-let content = ''
 
 for (let address of walletsArr) {
   params.address = address;
@@ -39,11 +39,16 @@ for (let address of walletsArr) {
 // get recent txns (no olders than 10 days)
 // const newTxns = common.getNewTxns(txns, 864000);
 
-const tokenTxns = common.combineTxns(txns);
+// const tokenTxns = common.combineTxns(txns);
 
-const obj = common.getTokenTxn(tokenTxns);
+// const obj = common.getTokenTxn(tokenTxns);
 
-fs.writeFile('Txns2.json', JSON.stringify({ result: obj }), function (err) {
-  if (err) throw err;
-  console.log('Saved!');
-});
+// fs.writeFile('Txns2.json', JSON.stringify({ result: obj }), function (err) {
+//   if (err) throw err;
+//   console.log('Saved!');
+// });
+
+bot.catch((err) => {
+  console.log('Ooops', err)
+})
+bot.startPolling();

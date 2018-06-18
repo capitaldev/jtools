@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-preset-node6": "^11.0.0",
+    "telegraf": "^3.21.2",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
