@@ -1,12 +1,27 @@
 import Telegraf from 'telegraf';
 import { TELEGRAM_KEY } from './const';
 
-function test(ctx) {
-  // setTimeout(() => ctx.replyWithMarkdown('hi'), 3000);
-  ctx.replyWithMarkdown('*Hii*');
-}
+import coins from '../store/coins.txt';
+import tokens from '../store/tokens.txt';
 
 const bot = new Telegraf(TELEGRAM_KEY)
-bot.command('/test', test);
+
+
+const listCoins = (ctx) => {
+  ctx.replyWithMarkdown('*request coins in 10 days!*\n', coins);
+}
+
+const listTokens = (ctx) => {
+  ctx.replyWithMarkdown('*request tokens in 10 days!*\n', tokens);
+}
+
+bot.command('/listCoins', listCoins);
+bot.command('/listTokens', listTokens);
+bot.command('/hi,', (ctx) => ctx.replyWithMarkdown('*Hi there* :)'));
+
+// function test(ctx) {
+//   ctx.replyWithMarkdown('*Hii*');
+// }
+// bot.command('/test', test);
 
 export default bot;
