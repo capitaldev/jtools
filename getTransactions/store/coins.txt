@@ -1,1 +1,26 @@
-{}
+{
+  "KTD (Kotlind)": 90,
+  "LDC (LEADCOIN)": 3.1,
+  "FOXT (Fox Trading)": 6,
+  "NPXS (Pundi X Token)": 64559463.93552009,
+  "MOAT (MOAT)": 634,
+  "THM (Themis Token)": 150,
+  "BBK (BrickblockToken)": 2,
+  "ELF (ELF)": 39848.32804,
+  "TRX (Tronix)": 2809465.8255899996,
+  "AUC (Auctus Token)": 3274.97247,
+  "YOO (Yooba token)": 36483,
+  "TheDAO (TheDAO)": 1026.28080854,
+  "VEN (VeChain)": 260000,
+  "NAVI (NaviToken)": 50,
+  "SNGX (SingularX)": 2000049.995,
+  "GNO (Gnosis)": 1434.521564482,
+  "DRG (DRAGON)": 2.87454546,
+  "XMC (MingoCoin)": 100,
+  "MILE (MILE)": 100032,
+  "BITUSD (Bit USD)": 1000000,
+  "TCT (TokenClub Token)": 3271421.68929998,
+  "BNB (BNB)": 1068.16,
+  "HT (HuobiToken)": 2551,
+  "DATA (DATAcoin)": 1299740.9806399902
+}
