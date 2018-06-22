@@ -9,6 +9,10 @@
   "author": "Jet",
   "license": "ISC",
   "dependencies": {
+    "babel-register": "^6.26.0",
     "telegraf": "^3.21.2"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0"
   }
 }
