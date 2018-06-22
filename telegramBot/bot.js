@@ -1,7 +1,7 @@
 import Telegraf from 'telegraf';
-import { TELEGRAM_KEY } from './const';
-import coins from '../store/coins.txt';
-import tokens from '../store/tokens.txt';
+import { TELEGRAM_KEY } from '../getTransactions/src/const';
+import coins from '../getTransactions/store/coins.txt';
+import tokens from '../getTransactions/store/tokens.txt';
 
 const bot = new Telegraf(TELEGRAM_KEY)
 

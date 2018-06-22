@@ -1,3 +1,6 @@
+import { XMLHttpRequest } from 'xmlhttprequest';
+// import axios from 'axios';
+
 const paramsTranslation = (obj) => {
   let res = {}
   for (let key in obj) {
@@ -82,7 +85,7 @@ const combineTxns = (txns) => {
   return result
 }
 
-const getTokenTxn = (tokenTxns) => {
+const listTxns = (tokenTxns) => {
   let result = { contract: {} };
   for (let item of tokenTxns) {
     // let title = item.contractAddress;
@@ -97,10 +100,61 @@ const getTokenTxn = (tokenTxns) => {
   return result;
 }
 
+const getTxns = (walletsArr) => {
+  console.log('Getting transactions...');
+  const params = {
+    // startblock: 1,
+    // endblock: 10,
+    apikey: '',
+    action: 'tokentx',
+    page: 1,
+    offset: 10,
+    sort: 'desc'
+  }
+  let txns = [];
+  for (let address of walletsArr) {
+    params.address = address;
+    const url = requestAPI(params);
+
+    const xhttp = new XMLHttpRequest();
+    console.log('Sending request...', address);
+    xhttp.open("GET", url, false);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+
+    let { result } = JSON.parse(xhttp.responseText);
+    if (result) {
+      txns = txns.concat(result);
+      txns = addType(txns, address);
+    }
+  }
+  return txns;
+}
+
+const getCoins = (arr, time) => {
+  const txns = getTxns(arr);
+  const newTs = getNewTxns(txns, time);
+  const tokenTxns = combineTxns(newTs);
+  const res = listTxns(tokenTxns);
+  delete res.contract;
+  return JSON.stringify(res, null, 2);
+}
+
+const getTokens = (arr, time) => {
+  const txns = getTxns(arr);
+  const newTs = getNewTxns(txns, time);
+  const tokenTxns = combineTxns(newTs);
+  const res = listTxns(tokenTxns);
+  return JSON.stringify(res.contract, null, 2);
+}
+
 export {
   requestAPI,
   getNewTxns,
   combineTxns,
   addType,
-  getTokenTxn
+  listTxns,
+  getTxns,
+  getCoins,
+  getTokens,
 }
