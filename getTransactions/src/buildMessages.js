@@ -2,7 +2,7 @@ import fs from 'fs';
 import { getCoins, getTokens } from './common';
 
 export default function buildMessages() {
-  const wallets = fs.readFileSync('../getAdress/wallet_demo.csv', 'utf8');
+  const wallets = fs.readFileSync(process.env.JTOOL_PATH + '/getAdress/wallet_demo.csv', 'utf8');
   const walletsArr = wallets.split('\r\n');
   
   const coins = getCoins(walletsArr, 864000);
