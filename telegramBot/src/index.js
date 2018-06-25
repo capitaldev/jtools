@@ -1,9 +1,9 @@
 require('dotenv').config()
-import Telegraf from 'telegraf';
-import { TELEGRAM_KEY } from process.env.JTOOL_PATH + '/getTransactions/src/const';
-import coins from process.env.JTOOL_PATH + '/getTransactions/store/coins.txt';
-import tokens from process.env.JTOOL_PATH +'/getTransactions/store/tokens.txt';
+const Telegraf = require('telegraf');
 
+const coins = require(process.env.JTOOL_PATH + '/getTransactions/store/coins.txt');
+const tokens = require(process.env.JTOOL_PATH + '/getTransactions/store/tokens.txt');
+const TELEGRAM_KEY = '592709609:AAEaPvzFgijM0wWpwQaChzZs5AfhbnHi7jg'
 const bot = new Telegraf(TELEGRAM_KEY)
 
 const listCoins = (ctx) => {
