@@ -2,7 +2,7 @@ require('dotenv').config()
 import buildMessages from './buildMessages';
 
 console.log('Start!!!')
-buildMessages();
+// buildMessages();
 setInterval(() => {
   console.log('Getting data...');
   buildMessages();
