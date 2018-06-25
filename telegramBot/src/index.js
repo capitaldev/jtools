@@ -1,7 +1,20 @@
 import Telegraf from 'telegraf';
-const api = '592709609:AAEaPvzFgijM0wWpwQaChzZs5AfhbnHi7jg';
+import { TELEGRAM_KEY } from '../getTransactions/src/const';
+import coins from '../getTransactions/store/coins.txt';
+import tokens from '../getTransactions/store/tokens.txt';
 
-const bot = new Telegraf(api)
-console.log('bot is start now')
-bot.command('/test', (ctx) => ctx.replyWithMarkdown('*Hello*'));
+const bot = new Telegraf(TELEGRAM_KEY)
+
+const listCoins = (ctx) => {
+  ctx.replyWithMarkdown('*request coins in 10 days!*\n', coins);
+}
+
+const listTokens = (ctx) => {
+  ctx.replyWithMarkdown('*request tokens in 10 days!*\n', tokens);
+}
+
+bot.command('/listCoins', listCoins);
+bot.command('/listTokens', listTokens);
+bot.command('/hi,', (ctx) => ctx.replyWithMarkdown('*Hi there* :)'));
+
 bot.startPolling();
