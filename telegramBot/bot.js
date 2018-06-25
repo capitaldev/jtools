@@ -1,10 +1,9 @@
 import Telegraf from 'telegraf';
-import { TELEGRAM_KEY } from '../getTransactions/src/const';
-import coins from '../getTransactions/store/coins.txt';
-import tokens from '../getTransactions/store/tokens.txt';
+import { TELEGRAM_KEY } from process.env.JTOOL_PATH + '/getTransactions/src/const';
+import coins from process.env.JTOOL_PATH + '/getTransactions/store/coins.txt';
+import tokens from process.env.JTOOL_PATH +'/getTransactions/store/tokens.txt';
 
 const bot = new Telegraf(TELEGRAM_KEY)
-
 
 const listCoins = (ctx) => {
   ctx.replyWithMarkdown('*request coins in 10 days!*\n', coins);
